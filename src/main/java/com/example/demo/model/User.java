@@ -7,5 +7,6 @@ import org.hibernate.annotations.*;
 
 import jakarta.persistence.*;
 
-@data
+@Data
 @Entity(name = "User")
+@Table(name = "user" , uniqueConstraints = @UniqueConstraints(columnNames = {"user_id"}))
