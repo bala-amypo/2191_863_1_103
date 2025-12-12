@@ -9,4 +9,7 @@ import jakarta.persistence.*;
 
 @Data
 @Entity(name = "User")
-@Table(name = "user" , uniqueConstraints = @UniqueConstraints(columnNames = {"user_id"}))
+@Table(name = "user" , uniqueConstraints = @UniqueConstraints(columnNames = {"user_id"} , name = "user_id_unique"))
+public class User implements Serializable {
+    
+}
