@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "employee_availability",uniqueConstraints = @UniqueConstraints(columnNames = {"employee_id","available_date"}))
@@ -15,42 +15,21 @@ public class EmployeeAvailability{
     private Employee employee;
 
     @Column(nullable = false)
-    private LocalTime startTime;
-
-    @Column(nullable = false , unique = true)
-    private String email;
+    private LocalDate availableDate;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role = Role.STAFF;
-
-    @Column(nullable = false)
-    private String skills;
-
-    @Column(nullable = false)
-    private Integer maxWeeklyHours;
-
-    @Column(nullable = false , updatable = false)
-    private LocalDateTime createdAt;
-
-    public enum Role {
-        ADMIN,
-        STAFF
-    }
+    private Boolean available = true;
 
     //Constructors
     public EmployeeAvailability(){
-        this.createdAt=LocalDateTime.now();
     }
 
-    public EmployeeAvailability(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
+    public EmployeeAvailability(Employee employee , Role role , LocalDate availableDate , Boolean available)
     {
-        this.fullName = fullName;
-        this.email = email;
+        this.employee = employee;
         this.role = role;
-        this.skills = skills;
-        this.maxWeeklyHours = maxWeeklyHours;
-        this.createdAt = LocalDateTime.now();
+        this.availableDate = availableDate;
+        this.available = available;
     }
 
     //Getters
@@ -58,11 +37,11 @@ public class EmployeeAvailability{
     {
         return id;
     }
-    public String getFullName()
+    public Employee getEmployee()
     {
-        return fullName; 
+        return employee; 
     }
-    public String getEmail()
+    public LocalDate getAvailableDate()
     {
         return email;
     }
