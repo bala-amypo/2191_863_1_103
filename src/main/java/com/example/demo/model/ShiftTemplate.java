@@ -27,7 +27,7 @@ public class ShiftTemplate{
     private Department department;
 
     //Constructors
-    public ShiftTemplate()
+    public ShiftTemplate(){
     }
 
     public ShiftTemplate(String templateName , LocalTime startTime , LocalTime endTime , String requiredSkills , Department department)
