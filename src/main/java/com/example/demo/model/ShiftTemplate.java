@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "shift_templates")
@@ -45,7 +45,7 @@ public class ShiftTemplate{
     {
         return id;
     }
-    public String gettemplateName()
+    public String getTemplateName()
     {
         return templateName;
     }
@@ -70,7 +70,7 @@ public class ShiftTemplate{
     {
         this.id = id;
     }
-    public void settemplateName(String templateName)
+    public void setTemplateName(String templateName)
     {
         this.templateName = templateName;
     }
