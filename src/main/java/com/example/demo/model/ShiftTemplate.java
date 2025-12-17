@@ -24,20 +24,19 @@ public class ShiftTemplate{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id",nullable = false)
-    private Department department
+    private Department department;
 
     //Constructors
     public ShiftTemplate()
     }
 
-    public ShiftTemplate(String templateName , LocalTime startTime , Role role , String skills , Integer maxWeeklyHours)
+    public ShiftTemplate(String templateName , LocalTime startTime , LocalTime endTime , String requiredSkills , Department department)
     {
-        this.fullName = fullName;
-        this.email = email;
-        this.role = role;
-        this.skills = skills;
-        this.maxWeeklyHours = maxWeeklyHours;
-        this.createdAt = LocalDateTime.now();
+        this.templateName = templateName;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.requiredSkills = requiredSkills;
+        this.department = department;
     }
 
     //Getters
