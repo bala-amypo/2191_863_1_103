@@ -48,9 +48,9 @@ public class Department{
     {
         return description;
     }
-    public String get()
+    public String getRequiredSkills()
     {
-        return role;
+        return requiredSkills;
     }
     public LocalDateTime getCreatedAt()
     {
@@ -61,25 +61,17 @@ public class Department{
     {
         this.id = id;
     }
-    public void setFullName(String fullName)
+    public void setName(String fullName)
     {
-        this.fullName = fullName;
+        this.name = name;
     }
-    public void setEmail(String email)
+    public void setDescription(String description)
     {
-        this.email = email;
+        this.description = description;
     }
-    public void setRole(Role role)
+    public void setRequiredSkills(String requiredSkills)
     {
-        this.role = role;
-    }
-    public void setSkills(String skills)
-    {
-        this.skills = skills;
-    }
-    public void setMaxWeeklyHours(Integer maxWeeklyHours)
-    {
-        this.maxWeeklyHours = maxWeeklyHours;
+        this.requiredSkills = requiredSkills;
     }
     public void setCreatedAt(LocalDateTime createdAt)
     {
