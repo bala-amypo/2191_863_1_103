@@ -59,28 +59,24 @@ public class ShiftTemplate{
     }
     public String getRequiredSkills()
     {
-        return role;
-    }
-    public String getSkills()
-    {
-        return skills;
+        return requiredSkills;
     }
     public Department getDepartment()
     {
-        return maxWeeklyHours;
+        return department;
     }
     //Setters
     public void setId(Long id)
     {
         this.id = id;
     }
-    public void setFullName(String fullName)
+    public void settemplateName(String templateName)
     {
-        this.fullName = fullName;
+        this.templateName = templateName;
     }
-    public void setEmail(String email)
+    public void setStartTime(String startTime)
     {
-        this.email = email;
+        this.startTime = startTime;
     }
     public void setRole(Role role)
     {
