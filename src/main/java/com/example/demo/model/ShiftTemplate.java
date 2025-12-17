@@ -37,6 +37,7 @@ public class ShiftTemplate{
         this.endTime = endTime;
         this.requiredSkills = requiredSkills;
         this.department = department;
+
     }
 
     //Getters
@@ -44,15 +45,19 @@ public class ShiftTemplate{
     {
         return id;
     }
-    public String getFullName()
+    public String gettemplateName()
     {
-        return fullName; 
+        return templateName;
     }
-    public String getEmail()
+    public LocalTime getStartTime()
     {
-        return email;
+        return startTime; 
     }
-    public Role getRole()
+    public LocalTime getEndTime()
+    {
+        return endTime;
+    }
+    public String getRequiredSkills()
     {
         return role;
     }
@@ -60,13 +65,9 @@ public class ShiftTemplate{
     {
         return skills;
     }
-    public Integer getMaxWeeklyHours()
+    public Department getDepartment()
     {
         return maxWeeklyHours;
-    }
-    public LocalDateTime getCreatedAt()
-    {
-        return createdAt;
     }
     //Setters
     public void setId(Long id)
