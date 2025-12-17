@@ -30,7 +30,7 @@ public class ShiftTemplate{
     public ShiftTemplate()
     }
 
-    public ShiftTemplate(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
+    public ShiftTemplate(String templateName , LocalTime startTime , Role role , String skills , Integer maxWeeklyHours)
     {
         this.fullName = fullName;
         this.email = email;
