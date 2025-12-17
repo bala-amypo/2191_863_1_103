@@ -86,7 +86,7 @@ public class ShiftTemplate{
     {
         this.requiredSkills = requiredSkills;
     }
-    public void setDepartment(String department)
+    public void setDepartment(Department department)
     {
         this.department = department;
     }
