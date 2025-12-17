@@ -35,11 +35,11 @@ public class Employee{
     }
 
     //Constructors
-    public Employees(){
+    public Employee(){
         this.createdAt=LocalDateTime.now();
     }
 
-    public Employees(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
+    public Employee(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
     {
         this.fullName = fullName;
         this.email = email;
@@ -57,6 +57,10 @@ public class Employee{
     public String getFullName()
     {
         return fullName; 
+    }
+    public String getEmail()
+    {
+        return email;
     }
     public Role getRole()
     {
