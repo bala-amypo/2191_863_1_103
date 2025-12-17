@@ -75,7 +75,34 @@ public class Employee{
         return createdAt;
     }
     //Setters
-    
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+    public void setFullName(String fullName)
+    {
+        this.fullName = fullName;
+    }
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+    public void setRole(Role role)
+    {
+        this.role = role;
+    }
+    public void setSkills(String skills)
+    {
+        this.skills = skills;
+    }
+    public void setMaxWeeklyHours(Integer maxWeeklyHours)
+    {
+        this.maxWeeklyHours = maxWeeklyHours;
+    }
+    public void setCreatedAt(LocalDateTime createdAt)
+    {
+        this.createdAt
+    }
 
 
 
