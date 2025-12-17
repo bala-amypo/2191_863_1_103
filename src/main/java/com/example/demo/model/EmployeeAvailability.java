@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "employee_availability",uniqueCon)
+@Table(name = "employee_availability",uniqueConstraints = @UniqueConstraints(columnNames = {"employee_id","available_date"}))
 public class EmployeeAvailability{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
