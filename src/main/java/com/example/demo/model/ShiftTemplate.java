@@ -11,7 +11,7 @@ public class ShiftTemplate{
     private Long id;
 
     @Column(nullable = false)
-    private String fullName;
+    private String template;
 
     @Column(nullable = false , unique = true)
     private String email;
