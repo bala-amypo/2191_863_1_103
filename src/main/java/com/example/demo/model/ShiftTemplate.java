@@ -74,24 +74,20 @@ public class ShiftTemplate{
     {
         this.templateName = templateName;
     }
-    public void setStartTime(String startTime)
+    public void setStartTime(LocalTime startTime)
     {
         this.startTime = startTime;
     }
-    public void setRole(Role role)
+    public void setEndTime(LocalTime endTime)
     {
-        this.role = role;
+        this.endTime = endTime;
     }
-    public void setSkills(String skills)
+    public void setRequiredSkills(String requiredSkills)
     {
-        this.skills = skills;
+        this.requiredSkills = requiredSkills;
     }
-    public void setMaxWeeklyHours(Integer maxWeeklyHours)
+    public void setDepartment(String department)
     {
-        this.maxWeeklyHours = maxWeeklyHours;
-    }
-    public void setCreatedAt(LocalDateTime createdAt)
-    {
-        this.createdAt = createdAt;
+        this.department = department;
     }
 }
