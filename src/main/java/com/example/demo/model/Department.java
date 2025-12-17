@@ -30,10 +30,8 @@ public class Department{
     public Department(String name , String description , String requiredSkills)
     {
         this.name = name;
-        this.email = email;
-        this.role = role;
-        this.skills = skills;
-        this.maxWeeklyHours = maxWeeklyHours;
+        this.description = description;
+        this.requiredSkills = requiredSkills;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -42,25 +40,17 @@ public class Department{
     {
         return id;
     }
-    public String getFullName()
+    public String getName()
     {
-        return fullName; 
+        return name; 
     }
-    public String getEmail()
+    public String getDescription()
     {
-        return email;
+        return description;
     }
-    public Role getRole()
+    public String get()
     {
         return role;
-    }
-    public String getSkills()
-    {
-        return skills;
-    }
-    public Integer getMaxWeeklyHours()
-    {
-        return maxWeeklyHours;
     }
     public LocalDateTime getCreatedAt()
     {
