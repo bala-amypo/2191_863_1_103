@@ -46,8 +46,37 @@ public class Employees {
         this.role = role;
         this.skills = skills;
         this.maxWeeklyHours = maxWeeklyHours;
-        this.
+        this.createdAt = LocalDateTime.now();
     }
+
+    //Getters
+    public Long getId() 
+    {
+        return id;
+    }
+    public String getFullName()
+    {
+        return fullName 
+    }
+    public Role getRole()
+    {
+        return role;
+    }
+    public String getSkills()
+    {
+        return skills;
+    }
+    public Integer getMaxWeeklyHours()
+    {
+        return maxWeeklyHours;
+    }
+    public LocalDateTime getCreatedAt()
+    {
+        return createdAt;
+    }
+    //Setters
+    
+
 
 
 
