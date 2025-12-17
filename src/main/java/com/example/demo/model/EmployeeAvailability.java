@@ -27,7 +27,6 @@ public class EmployeeAvailability{
     public EmployeeAvailability(Employee employee , Role role , LocalDate availableDate , Boolean available)
     {
         this.employee = employee;
-        this.role = role;
         this.availableDate = availableDate;
         this.available = available;
     }
@@ -43,51 +42,27 @@ public class EmployeeAvailability{
     }
     public LocalDate getAvailableDate()
     {
-        return email;
+        return availableDate;
     }
-    public Role getRole()
+    public Boolean getAvailable()
     {
-        return role;
-    }
-    public String getSkills()
-    {
-        return skills;
-    }
-    public Integer getMaxWeeklyHours()
-    {
-        return maxWeeklyHours;
-    }
-    public LocalDateTime getCreatedAt()
-    {
-        return createdAt;
+        return available;
     }
     //Setters
     public void setId(Long id)
     {
         this.id = id;
     }
-    public void setFullName(String fullName)
+    public void setEmployee(Employee employee)
     {
-        this.fullName = fullName;
+        this.employee = employee;
     }
-    public void setEmail(String email)
+    public void setAvailableDate(String availableDate)
     {
-        this.email = email;
+        this.availableDate = availableDate;
     }
-    public void setRole(Role role)
+    public void setAvailable(Role available)
     {
-        this.role = role;
-    }
-    public void setSkills(String skills)
-    {
-        this.skills = skills;
-    }
-    public void setMaxWeeklyHours(Integer maxWeeklyHours)
-    {
-        this.maxWeeklyHours = maxWeeklyHours;
-    }
-    public void setCreatedAt(LocalDateTime createdAt)
-    {
-        this.createdAt = createdAt;
+        this.available = available;
     }
 }
