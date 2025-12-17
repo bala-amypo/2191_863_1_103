@@ -10,8 +10,12 @@ public class EmployeeAvailability{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id",nullable = false)
+    private Employee employee;
+
     @Column(nullable = false)
-    private String fullName;
+    private LocalTime startTime;
 
     @Column(nullable = false , unique = true)
     private String email;
