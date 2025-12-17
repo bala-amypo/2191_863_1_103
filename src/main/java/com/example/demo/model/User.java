@@ -30,10 +30,10 @@ public class User {
     //Constructors
     public User(){}
 
-    public User(String name , String name , String email , String password , Role role)
+    public User(String name , String email , String password , Role role)
     {
         this.name = name;
-        this.emial = email;
+        this.email = email;
         this.password = password;
         this.role = role;
     }

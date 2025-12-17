@@ -26,7 +26,7 @@ public class Employee{
     @Column(nullable = false)
     private Integer maxWeeklyHours;
 
-    @Column(nullable = false , updateable = false)
+    @Column(nullable = false , updatable = false)
     private LocalDateTime createdAt;
 
     public enum Role {
