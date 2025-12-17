@@ -11,32 +11,23 @@ public class ShiftTemplate{
     private Long id;
 
     @Column(nullable = false)
-    private String template;
-
-    @Column(nullable = false , unique = true)
-    private String email;
+    private String templateName;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role = Role.STAFF;
+    private LocalTime startTime;
 
     @Column(nullable = false)
-    private String skills;
+    private LocalTime endTime;
 
     @Column(nullable = false)
-    private Integer maxWeeklyHours;
+    private String requiredSkills;
 
-    @Column(nullable = false , updatable = false)
-    private LocalDateTime createdAt;
-
-    public enum Role {
-        ADMIN,
-        STAFF
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id",nullable = false)
+    private Department department
 
     //Constructors
-    public ShiftTemplate(){
-        this.createdAt=LocalDateTime.now();
+    public ShiftTemplate()
     }
 
     public ShiftTemplate(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
