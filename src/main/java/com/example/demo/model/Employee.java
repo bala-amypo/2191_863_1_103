@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "employees")
-public class Employees {
+public class Employee{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -75,6 +75,7 @@ public class Employees {
         return createdAt;
     }
     //Setters
+    
 
 
 
