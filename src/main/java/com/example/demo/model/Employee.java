@@ -56,7 +56,7 @@ public class Employees {
     }
     public String getFullName()
     {
-        return fullName 
+        return fullName; 
     }
     public Role getRole()
     {
@@ -75,7 +75,7 @@ public class Employees {
         return createdAt;
     }
     //Setters
-    
+
 
 
 
