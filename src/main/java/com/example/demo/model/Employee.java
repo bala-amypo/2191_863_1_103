@@ -13,6 +13,16 @@ public class Employees {
     @Column(nullable = false)
     private String fullName;
 
-    @Column(nullable = false , unique = )
+    @Column(nullable = false , unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.STAFF;
+
+    @Column(nullable = false)
+    private String skills;
+
+    @Column
 
 }
