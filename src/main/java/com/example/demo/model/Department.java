@@ -12,14 +12,15 @@ public class Department{
     private Long id;
 
     @Column(nullable = false , unique = true)
-    @NotBlank(message = "Max weekly hours is required")
-    @Min(value = 1,message = "Max weekly hours must be greater than 0")
+    @NotBlank(message = "Department name is required")
     private String name;
 
     @Column(nullable = false)
+    @NotBlank(message = "Description is required")
     private String description;
 
     @Column(nullable = false)
+    @NotBlank(message = "Required skills are required")
     private String requiredSkills;
 
     @Column(nullable = false , updatable = false)

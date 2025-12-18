@@ -12,19 +12,24 @@ public class ShiftTemplate{
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Template name is required")
     private String templateName;
 
     @Column(nullable = false)
+    @NotBlank(message = "Start time is required")
     private LocalTime startTime;
 
     @Column(nullable = false)
+    @NotBlank(message = "End time is required")
     private LocalTime endTime;
 
     @Column(nullable = false)
+    @NotBlank(message = "Required skills are required")
     private String requiredSkills;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id",nullable = false)
+    @NotBlank(message = "Department is required")
     private Department department;
 
     //Constructors
