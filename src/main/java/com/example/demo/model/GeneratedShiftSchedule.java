@@ -36,7 +36,7 @@ public class GeneratedShiftSchedule{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shift_templates_id",nullable = false)
-    @NotBlank(message = "Shift Date is required")
+    @NotBlank(message = "Shift Template is required")
     private ShiftTemplate shiftTemplate;
 
 
