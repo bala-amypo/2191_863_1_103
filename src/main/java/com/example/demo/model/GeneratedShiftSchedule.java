@@ -1,38 +1,37 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "generatedShiftSchedule")
 public class Employee{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String fullName;
-
-    @Column(nullable = false , unique = true)
-    private String email;
+    private LocalDate = shiftDate;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role = Role.STAFF;
+    private LocalTime startTime;
 
     @Column(nullable = false)
-    private String skills;
+    private LocalTime endTime;
 
-    @Column(nullable = false)
-    private Integer maxWeeklyHours;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id",nullable = false)
+    private Department department;
 
-    @Column(nullable = false , updatable = false)
-    private LocalDateTime createdAt;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id",nullable = false)
+    private Employee employee;
 
-    public enum Role {
-        ADMIN,
-        STAFF
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shift_templates_id",nullable = false)
+    private Employee employee;
+
 
     //Constructors
     public Employee(){
