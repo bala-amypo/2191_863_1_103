@@ -13,30 +13,30 @@ public class GeneratedShiftSchedule{
     private Long id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Shift Date is required")
+    @NotNull(message = "Shift Date is required")
     private LocalDate shiftDate;
 
     @Column(nullable = false)
-    @NotBlank(message = "Start Time is required")
+    @NotNull(message = "Start Time is required")
     private LocalTime startTime;
 
     @Column(nullable = false)
-    @NotBlank(message = "End Time is required")
+    @NotNull(message = "End Time is required")
     private LocalTime endTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id",nullable = false)
-    @NotBlank(message = "Department is required")
+    @NotNull(message = "Department is required")
     private Department department;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id",nullable = false)
-    @NotBlank(message = "Employee is required")
+    @NotNull(message = "Employee is required")
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shift_templates_id",nullable = false)
-    @NotBlank(message = "Shift Template is required")
+    @NotNull(message = "Shift Template is required")
     private ShiftTemplate shiftTemplate;
 
 
