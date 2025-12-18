@@ -83,13 +83,29 @@ public class GeneratedShiftSchedule{
     {
         this.id = id;
     }
-     public void setAvailableDate(String shiftDate)
+     public void setshiftTemplate(LocalDate shiftDate)
     {
-        this.availablshiftDateeDate = availableDate;
+        this.shiftDate = shiftDate;
+    }
+     public void setStartTime(LocalTime startTime)
+    {
+        this.startTime = startTime;
+    }
+    public void setEndTime(LocalTime endTime)
+    {
+        this.endTime = endTime;
+    }
+    public void setDepartment(Department department)
+    {
+        this.department = department;
     }
     public void setEmployee(Employee employee)
     {
         this.employee = employee;
+    }
+     public void setshiftTemplate(ShiftTemplate shiftTemplate)
+    {
+        this.shiftTemplate = shiftTemplate;
     }
 
 }
