@@ -12,6 +12,7 @@ public class Department{
     private Long id;
 
     @Column(nullable = false , unique = true)
+    @NotBlank(message = "Max weekly hours is required")
     private String name;
 
     @Column(nullable = false)

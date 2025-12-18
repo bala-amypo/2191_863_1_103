@@ -20,6 +20,7 @@ public class User {
     private String email;
 
     @Column(nullable = false)
+    @NotBlank(message = "Password is required")
     private String password;
 
     @Column(nullable = false)

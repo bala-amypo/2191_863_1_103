@@ -12,9 +12,12 @@ public class Employee{
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Full name is required")
     private String fullName;
 
     @Column(nullable = false , unique = true)
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email must be valid")
     private String email;
 
     @Column(nullable = false)
@@ -22,9 +25,12 @@ public class Employee{
     private Role role = Role.STAFF;
 
     @Column(nullable = false)
+    @NotBlank(message = "Skills is required")
     private String skills;
 
     @Column(nullable = false)
+    @NotBlank(message = "Max weekly hours is required")
+    @Min(value = 1,message = "Max weekly hours must be greater than 0")
     private Integer maxWeeklyHours;
 
     @Column(nullable = false , updatable = false)
