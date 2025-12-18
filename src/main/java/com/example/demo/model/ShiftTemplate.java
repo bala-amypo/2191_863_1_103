@@ -96,4 +96,5 @@ public class ShiftTemplate{
     {
         this.department = department;
     }
+    @Pre
 }
