@@ -13,6 +13,7 @@ public class Department{
 
     @Column(nullable = false , unique = true)
     @NotBlank(message = "Max weekly hours is required")
+    @Min(value = 1,message = "Max weekly hours must be greater than 0")
     private String name;
 
     @Column(nullable = false)
