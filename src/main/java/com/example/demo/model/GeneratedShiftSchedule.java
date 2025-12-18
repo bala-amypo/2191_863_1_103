@@ -12,7 +12,7 @@ public class GeneratedShiftSchedule{
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate = shiftDate;
+    private LocalDate shiftTemplate;
 
     @Column(nullable = false)
     private LocalTime startTime;
@@ -53,6 +53,10 @@ public class GeneratedShiftSchedule{
     {
         return id;
     }
+    public LocalDate shiftDate()
+    {
+        return shiftDate;
+    }
      public LocalTime getStartTime()
     {
         return startTime; 
@@ -60,18 +64,6 @@ public class GeneratedShiftSchedule{
     public LocalTime getEndTime()
     {
         return endTime;
-    }
-    public Role getRole()
-    {
-        return role;
-    }
-    public String getSkills()
-    {
-        return skills;
-    }
-    public Integer getMaxWeeklyHours()
-    {
-        return maxWeeklyHours;
     }
     public Department getDepartment()
     {
@@ -81,33 +73,23 @@ public class GeneratedShiftSchedule{
     {
         return employee; 
     }
+    public ShiftTemplate getshiftTemplate()
+    { 
+        return shiftTemplate;
+
+    }
     //Setters
     public void setId(Long id)
     {
         this.id = id;
     }
-    public void setFullName(String fullName)
+     public void setAvailableDate(String shiftDate)
     {
-        this.fullName = fullName;
+        this.availablshiftDateeDate = availableDate;
     }
-    public void setEmail(String email)
+    public void setEmployee(Employee employee)
     {
-        this.email = email;
+        this.employee = employee;
     }
-    public void setRole(Role role)
-    {
-        this.role = role;
-    }
-    public void setSkills(String skills)
-    {
-        this.skills = skills;
-    }
-    public void setMaxWeeklyHours(Integer maxWeeklyHours)
-    {
-        this.maxWeeklyHours = maxWeeklyHours;
-    }
-    public void setCreatedAt(LocalDateTime createdAt)
-    {
-        this.createdAt = createdAt;
-    }
+
 }
