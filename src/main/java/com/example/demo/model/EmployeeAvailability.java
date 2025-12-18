@@ -13,12 +13,15 @@ public class EmployeeAvailability{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id",nullable = false)
+    @NotBlank(message = "Employee is required")
     private Employee employee;
 
     @Column(nullable = false)
+    @NotBlank(message = "Available Date is required")
     private LocalDate availableDate;
 
     @Column(nullable = false)
+    @NotBlank(message = "Available status is required")
     private Boolean available = true;
 
     //Constructors
