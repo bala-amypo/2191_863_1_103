@@ -109,5 +109,17 @@ public class GeneratedShiftSchedule{
     {
         this.shiftTemplate = shiftTemplate;
     }
+    @PrePersist
+    @PreUpdate
+    private void validateTimes()
+    {
+        if(endTime != null && startTime !=null)
+        {
+            if(endTime.isBefore(startTime)||endTime.equals(startTime))
+            {
+                throw new IllegalArgumentException("End time must be after start time");
+            }
+        }
+    }
 
 }

@@ -11,7 +11,7 @@ public class EmployeeAvailability{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-     @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id",nullable = false)
     private Employee employee;
 
