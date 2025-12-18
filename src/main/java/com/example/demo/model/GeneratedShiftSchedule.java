@@ -42,11 +42,10 @@ public class GeneratedShiftSchedule{
 
     //Constructors
     public GeneratedShiftSchedule(){
-        this.createdAt=LocalTime.now();
-        this.createdAt=LocalDate.now();
+        this.shiftDate=LocalDate.now();
     }
 
-    public GeneratedShiftSchedule(LocalDate shiftDate , LocalTime startTime , LocalTime endTime , Department department ,  Employee employee ,ShiftTemplate shiftTemplate )
+    public GeneratedShiftSchedule(LocalDate shiftDate , LocalTime startTime , LocalTime endTime , Department department ,  Employee employee , ShiftTemplate shiftTemplate )
     {
         this.shiftDate = shiftDate;
         this.startTime = startTime;
