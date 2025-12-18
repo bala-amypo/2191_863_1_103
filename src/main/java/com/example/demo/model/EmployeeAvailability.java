@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "employee_availability",uniqueConstraints = @UniqueConstraints(columnNames = {"employee_id","available_date"}))

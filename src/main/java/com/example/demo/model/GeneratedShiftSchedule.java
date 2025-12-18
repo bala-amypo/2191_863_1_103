@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalTime;
 import java.time.LocalDate;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "generatedShiftSchedule")
@@ -12,7 +13,7 @@ public class GeneratedShiftSchedule{
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate shiftTemplate;
+    private LocalDate shiftDate;
 
     @Column(nullable = false)
     private LocalTime startTime;

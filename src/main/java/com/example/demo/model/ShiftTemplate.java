@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.time.LocalTime;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "shift_templates")
