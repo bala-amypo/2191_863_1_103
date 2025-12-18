@@ -12,7 +12,7 @@ public class EmployeeAvailability{
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id",nullable = false,unique = true)
+    @JoinColumn(name = "employee_id", nullable = false , unique = true)
     @NotNull(message = "Employee is required")
     private Employee employee;
 
