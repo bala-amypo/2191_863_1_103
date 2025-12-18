@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "generatedShiftSchedule")
-public class Employee{
+public class GeneratedShiftSchedule{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,22 +30,22 @@ public class Employee{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shift_templates_id",nullable = false)
-    private Employee employee;
+    private ShiftTemplate shiftTemplate;
 
 
     //Constructors
-    public Employee(){
+    public GeneratedShiftSchedule(){
         this.createdAt=LocalDateTime.now();
     }
 
-    public Employee(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
+    public GeneratedShiftSchedule(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
     {
-        this.fullName = fullName;
-        this.email = email;
-        this.role = role;
-        this.skills = skills;
-        this.maxWeeklyHours = maxWeeklyHours;
-        this.createdAt = LocalDateTime.now();
+        this.shiftDate = shiftDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.department = department;
+        this.employee = employee;
+        this.shiftTemplate = shiftTemplate;
     }
 
     //Getters
@@ -53,13 +53,13 @@ public class Employee{
     {
         return id;
     }
-    public String getFullName()
+     public LocalTime getStartTime()
     {
-        return fullName; 
+        return startTime; 
     }
-    public String getEmail()
+    public LocalTime getEndTime()
     {
-        return email;
+        return endTime;
     }
     public Role getRole()
     {
@@ -73,9 +73,13 @@ public class Employee{
     {
         return maxWeeklyHours;
     }
-    public LocalDateTime getCreatedAt()
+    public Department getDepartment()
     {
-        return createdAt;
+        return department;
+    }
+     public Employee getEmployee()
+    {
+        return employee; 
     }
     //Setters
     public void setId(Long id)
