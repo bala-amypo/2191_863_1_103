@@ -15,6 +15,8 @@ public class User {
     private String name;
 
     @Column(nullable = false , unique = true)
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email must be valid")
     private String email;
 
     @Column(nullable = false)

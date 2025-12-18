@@ -36,7 +36,8 @@ public class GeneratedShiftSchedule{
 
     //Constructors
     public GeneratedShiftSchedule(){
-        this.createdAt=LocalDateTime.now();
+        this.createdAt=LocalTime.now();
+        this.createdAt=LocalDate.now();
     }
 
     public GeneratedShiftSchedule(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
