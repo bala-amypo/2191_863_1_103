@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import jakarta.validation.constraints.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "departments")
 public class Department{
     @Id
