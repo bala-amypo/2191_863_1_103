@@ -46,7 +46,7 @@ public class GeneratedShiftSchedule{
         this.createdAt=LocalDate.now();
     }
 
-    public GeneratedShiftSchedule(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
+    public GeneratedShiftSchedule(LocalDate shiftDate , LocalTime startTime , LocalTime endTime , Department department ,  Employee employee ,ShiftTemplate shiftTemplate )
     {
         this.shiftDate = shiftDate;
         this.startTime = startTime;

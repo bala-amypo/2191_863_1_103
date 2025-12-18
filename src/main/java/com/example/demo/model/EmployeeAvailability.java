@@ -28,7 +28,7 @@ public class EmployeeAvailability{
     public EmployeeAvailability(){
     }
 
-    public EmployeeAvailability(Employee employee , Role role , LocalDate availableDate , Boolean available)
+    public EmployeeAvailability(Employee employee , LocalDate availableDate , Boolean available)
     {
         this.employee = employee;
         this.availableDate = availableDate;
@@ -65,7 +65,7 @@ public class EmployeeAvailability{
     {
         this.availableDate = availableDate;
     }
-    public void setAvailable(Role available)
+    public void setAvailable(Boolean available)
     {
         this.available = available;
     }
