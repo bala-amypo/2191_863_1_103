@@ -78,7 +78,21 @@ public class Employee{
         return skills;
     }
     //Skills passed as comma-separated values returns as Set<String>
-    public Ser
+    public Set<String> getSkillsSet()
+    {
+        Set<String>skillSet = new HashSet<>();
+        if(skills == null || skills.trim().isEmpty())
+        {
+            return skillSet;
+        }
+        String[] parts = skills.split(",");
+        for(String part : parts)
+        {
+        
+
+      
+
+    }
     public Integer getMaxWeeklyHours()
     {
         return maxWeeklyHours;
