@@ -18,8 +18,7 @@ public class Department{
     @Column
     private String description;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Required skills are required")
+    @Column
     private String requiredSkills;
 
     @Column(nullable = false , updatable = false)

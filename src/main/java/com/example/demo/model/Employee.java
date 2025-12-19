@@ -22,7 +22,6 @@ public class Employee{
     private String email;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private Role role = Role.STAFF;
 
     @Column(nullable = false)
@@ -36,10 +35,6 @@ public class Employee{
     @Column(nullable = false , updatable = false)
     private LocalDateTime createdAt;
 
-    public enum Role {
-        ADMIN,
-        STAFF
-    }
 
     //Constructors
     public Employee(){
