@@ -11,6 +11,6 @@ import java.util.List;
 public interface ShiftTemplateRepository extends JpaRepository<ShiftTemplate,Long>
 {
     Optional<ShiftTemplate>findByTemplateNameAndDepartment(String name , Long id);
-    boolean existsByEmail(String name);
+    boolean findByDepartment_Id(String name);
     List<ShiftTemplate> findAll();
 }

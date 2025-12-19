@@ -1,7 +1,16 @@
-package com.example.demo.repository;
+kage com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.example.demo.model.Employee;
+import com.example.demo.model.ShiftTemplate;
+
+import java.util.Optional;
+import java.util.List;
 
 @Repository
+public interface ShiftTemplateRepository extends JpaRepository<ShiftTemplate,Long>
+{
+    Optional<ShiftTemplate>findByTemplateNameAndDepartment(String name , Long id);
+    boolean findByDepartment_Id(String name);
+    List<ShiftTemplate> findAll();
+}
