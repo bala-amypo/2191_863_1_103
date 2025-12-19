@@ -11,7 +11,8 @@ import java.util.List;
 @Repository
 public interface AvailabilityRepository extends JpaRepository<EmployeeAvailability,Long>
 {
-    Optional<EmployeeAvailability>findBy(String name , Long id);
-    List<EmployeeAvailability>
+    Optional<EmployeeAvailability>findByEmployee_IdAndAvailableDate(Long id , LocalDate date);
+    List<EmployeeAvailability>findByAvailableDateAndAvailability(LocalDate date, boolean available);
+    List<EmployeeAvailability>findBy 
     List<EmployeeAvailability> findAll();
 }
