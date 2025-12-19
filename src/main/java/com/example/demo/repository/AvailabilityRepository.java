@@ -1,16 +1,17 @@
-kage com.example.demo.repository;
+package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.example.demo.model.ShiftTemplate;
+import com.example.demo.model.EmployeeAvailability;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.List;
 
 @Repository
-public interface ShiftTemplateRepository extends JpaRepository<ShiftTemplate,Long>
+public interface AvailabilityRepository extends JpaRepository<EmployeeAvailability,Long>
 {
-    Optional<ShiftTemplate>findByTemplateNameAndDepartment(String name , Long id);
-    boolean findByDepartment_Id(String name);
-    List<ShiftTemplate> findAll();
+    Optional<EmployeeAvailability>findBy(String name , Long id);
+    List<EmployeeAvailability>
+    List<EmployeeAvailability> findAll();
 }
