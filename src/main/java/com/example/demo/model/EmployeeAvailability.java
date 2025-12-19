@@ -5,18 +5,18 @@ import java.time.LocalDate;
 import jakarta.validation.constraints.*;
 
 @Entity
-@Table(name = "employee_availability")
+@Table(name = "employee_availability",uniqueConstraints = @UniqueConstraint())
 public class EmployeeAvailability{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = false , unique = true)
+    @JoinColumn(name = "employee_id", nullable = false)
     @NotNull(message = "Employee is required")
     private Employee employee;
 
-    @Column(nullable = false , unique = true)
+    @Column(nullable = false)
     @NotNull(message = "Available Date is required")
     private LocalDate availableDate;
 
