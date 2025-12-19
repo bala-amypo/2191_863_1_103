@@ -25,11 +25,10 @@ public class Employee{
     private Role role = Role.STAFF;
 
     @Column(nullable = false)
-    @NotBlank(message = "Skills is required")
     private String skills;
 
     @Column(nullable = false)
-    @NotBlank(message = "Max weekly hours is required")
+    @NotNull(message = "Max weekly hours is required")
     @Min(value = 1,message = "Max weekly hours must be greater than 0")
     private Integer maxWeeklyHours;
 
