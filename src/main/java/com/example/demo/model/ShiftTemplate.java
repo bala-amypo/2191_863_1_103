@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import jakarta.validation.constraints.*;
 
 @Entity
-@Table(name = "shift_templates")
+@Table(name = "shift_templates", uniqueConstraints = @UniqueConstraint(columnNames = {"templateName","department_id"}))
 public class ShiftTemplate{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

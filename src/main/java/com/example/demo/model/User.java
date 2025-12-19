@@ -25,7 +25,7 @@ public class User {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role = Role.ANALYST;
+    private String role = "ANALYST";
 
     public enum Role{
         ADMIN,
