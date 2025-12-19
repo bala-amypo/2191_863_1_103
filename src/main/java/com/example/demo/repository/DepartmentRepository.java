@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department,Long>
 {
-    Optional<Department>findById(Long email);
-    boolean existsByEmail(String email);
-    List<Employee> findAll();
+    Optional<Department>findById(Long id);
+    boolean existsByEmail(String name);
+    List<Department> findAll();
 }
