@@ -16,10 +16,12 @@ public class LoginResponse
     public LoginResponse(String message,String token,String email,String name,String role)
     {
        this.message = message;
-       
+       this.token = token;
+       this.email = email;
+       this.name = name;
+       this.role = role;
     }
-
-
+    
     public LoginResponse(String message)
     {
         this.message=message;
