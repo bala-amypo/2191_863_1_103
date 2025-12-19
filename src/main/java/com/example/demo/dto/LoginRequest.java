@@ -5,16 +5,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthResponse
-{
-    private String message;
-    private String token;
+public class LoginRequest {
     private String email;
-    private String name;
-    private String role;
-
-    public AuthResponse(String message)
-    {
-        this.message=message;
-    }
+    private String password;
 }
