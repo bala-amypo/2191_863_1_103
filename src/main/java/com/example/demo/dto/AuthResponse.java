@@ -5,7 +5,10 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthRequest {
+public class AuthResponse {
+    private String message;
+    private String token;
     private String email;
-    private String password;
+    private String name;
+    
 }
