@@ -7,7 +7,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShiftTemplateDto {
-    private SLocalDate shiftDate;
+    private LocalDate shiftDate;
     private LocalTime startTime ;
     private LocalTime endTime;
     private Department department;
