@@ -77,6 +77,8 @@ public class Employee{
     {
         return skills;
     }
+    //Skills passed as comma-separated values returns as Set<String>
+    public Ser
     public Integer getMaxWeeklyHours()
     {
         return maxWeeklyHours;
