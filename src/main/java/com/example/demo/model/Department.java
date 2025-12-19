@@ -15,8 +15,7 @@ public class Department{
     @NotBlank(message = "Department name is required")
     private String name;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Description is required")
+    @Column
     private String description;
 
     @Column(nullable = false)

@@ -88,10 +88,13 @@ public class Employee{
         String[] parts = skills.split(",");
         for(String part : parts)
         {
-        
-
-      
-
+            String trimmed = part.trim();
+            if(!trimmed.isEmpty())
+            {
+                skillSet.add(trimmed);
+            } 
+        }
+        return skillSet;
     }
     public Integer getMaxWeeklyHours()
     {
