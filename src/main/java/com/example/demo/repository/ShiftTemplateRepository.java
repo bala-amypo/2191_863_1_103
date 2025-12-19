@@ -2,15 +2,15 @@ ackage com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.example.demo.model.Department;
+import com.example.demo.model.ShiftTemplate;
 
 import java.util.Optional;
 import java.util.List;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department,Long>
+public interface ShiftTemplateRepository extends JpaRepository<ShiftTemplate,Long>
 {
-    Optional<Department>findById(Long id);
+    Optional<ShiftTemplate>findByTemplateNameAndDepartment(String name , Long id);
     boolean existsByEmail(String name);
-    List<Department> findAll();
+    List<ShiftTemplate> findAll();
 }
