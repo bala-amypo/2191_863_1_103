@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class SwaggerConfigpackage com.example.demo.repository; {
+public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
