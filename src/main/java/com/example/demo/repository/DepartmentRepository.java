@@ -8,9 +8,9 @@ import java.util.Optional;
 import java.util.List;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Employee,Long>
+public interface DepartmentRepository extends JpaRepository<Department,Long>
 {
-    Optional<Employee>findByEmail(String email);
+    Optional<Department>findById(Long email);
     boolean existsByEmail(String email);
     List<Employee> findAll();
 }
