@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import lombok.*;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -8,7 +9,7 @@ import lombok.*;
 public class ShiftTemplateDto {
     private String templateName;
     private LocalTime startTime;
-    private LocalTime role
-    private String skills;
-    private Integer maxWeeklyHours;
+    private LocalTime endTime;
+    private String requiredskills;
+    private Long departmentId;
 }
