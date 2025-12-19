@@ -13,6 +13,6 @@ public interface AvailabilityRepository extends JpaRepository<EmployeeAvailabili
 {
     Optional<EmployeeAvailability>findByEmployee_IdAndAvailableDate(Long id , LocalDate date);
     List<EmployeeAvailability>findByAvailableDateAndAvailability(LocalDate date, boolean available);
-    List<EmployeeAvailability>findBy 
+    List<EmployeeAvailability>findByEmployee_Id(Long id);
     List<EmployeeAvailability> findAll();
 }
