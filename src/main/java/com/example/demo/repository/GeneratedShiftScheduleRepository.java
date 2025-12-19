@@ -5,13 +5,13 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.GeneratedShiftSchedule;
 
 @Repository
-import java.util.Optional;
 import java.util.List;
+import.java.time.LocalDate;
 
 @Repository
-public interface GeneratedShiftScheduleRepository extends JpaRepository<Gene,Long>
+public interface GeneratedShiftScheduleRepository extends JpaRepository<GeneratedShiftSchedule,Long>
 {
-    Optional<GeneratedShiftScheduleRepository >findByShiftDate(LocalDate date);
-    boolean existsByName(String name);
-    List<Department> findAll();
+    List<GeneratedShiftSchedule>findByShiftDate(LocalDate date);
+    List<GeneratedShiftSchedule>findAll();
+    
 }
