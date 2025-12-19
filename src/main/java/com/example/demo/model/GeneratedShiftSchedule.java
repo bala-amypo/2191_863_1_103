@@ -60,7 +60,7 @@ public class GeneratedShiftSchedule{
     {
         return id;
     }
-    public LocalDate shiftDate()
+    public LocalDate getShiftDate()
     {
         return shiftDate;
     }
@@ -80,7 +80,7 @@ public class GeneratedShiftSchedule{
     {
         return employee; 
     }
-    public ShiftTemplate getshiftTemplate()
+    public ShiftTemplate getShiftTemplate()
     { 
         return shiftTemplate;
 
@@ -90,7 +90,7 @@ public class GeneratedShiftSchedule{
     {
         this.id = id;
     }
-     public void setshiftTemplate(LocalDate shiftDate)
+     public void setShiftTemplate(LocalDate shiftDate)
     {
         this.shiftDate = shiftDate;
     }
@@ -110,7 +110,7 @@ public class GeneratedShiftSchedule{
     {
         this.employee = employee;
     }
-     public void setshiftTemplate(ShiftTemplate shiftTemplate)
+     public void setShiftTemplate(ShiftTemplate shiftTemplate)
     {
         this.shiftTemplate = shiftTemplate;
     }
