@@ -40,7 +40,7 @@ public class Employee{
         this.createdAt=LocalDateTime.now();
     }
 
-    public Employee(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
+    public Employee(String fullName , String email , String role , String skills , Integer maxWeeklyHours)
     {
         this.fullName = fullName;
         this.email = email;
@@ -63,7 +63,7 @@ public class Employee{
     {
         return email;
     }
-    public Role getRole()
+    public String getRole()
     {
         return role;
     }
@@ -111,7 +111,7 @@ public class Employee{
     {
         this.email = email;
     }
-    public void setRole(Role role)
+    public void setRole(String role)
     {
         this.role = role;
     }

@@ -24,18 +24,12 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private String role = "ANALYST";
-
-    public enum Role{
-        ADMIN,
-        ANALYST
-    }
 
     //Constructors
     public User(){}
 
-    public User(String name , String email , String password , Role role)
+    public User(String name , String email , String password , String role)
     {
         this.name = name;
         this.email = email;
@@ -60,7 +54,7 @@ public class User {
     {
         return password;
     }
-    public Role getRole()
+    public String getRole()
     {
         return role;
     }
@@ -82,7 +76,7 @@ public class User {
     {
         this.password = password;
     }
-    public void setRole(Role role)
+    public void setRole(String role)
     {
         this.role = role;
     }
