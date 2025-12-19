@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import jakarta.validation.constraints.*;
 
 @Entity
-@Table(name = "generatedShiftSchedule")
+@Table(name = "generated_shift_schedules")
 public class GeneratedShiftSchedule{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class GeneratedShiftSchedule{
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shift_templates_id",nullable = false)
+    @JoinColumn(name = "shift_template_id",nullable = false)
     @NotNull(message = "Shift Template is required")
     private ShiftTemplate shiftTemplate;
 

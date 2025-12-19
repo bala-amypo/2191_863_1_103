@@ -22,7 +22,7 @@ public class EmployeeAvailability{
 
     @Column(nullable = false)
     @NotNull(message = "Available status is required")
-    private Boolean available = true;
+    private Boolean available;
 
     //Constructors
     public EmployeeAvailability(){

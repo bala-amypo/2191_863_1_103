@@ -22,7 +22,7 @@ public class Employee{
     private String email;
 
     @Column(nullable = false)
-    private Role role = Role.STAFF;
+    private String role = "STAFF";
 
     @Column(nullable = false)
     private String skills;
@@ -34,7 +34,6 @@ public class Employee{
 
     @Column(nullable = false , updatable = false)
     private LocalDateTime createdAt;
-
 
     //Constructors
     public Employee(){
