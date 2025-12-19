@@ -5,7 +5,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthResponse {
+public class AuthResponse
+{
     private String message;
     private String token;
     private String email;
@@ -13,7 +14,7 @@ public class AuthResponse {
     private String role;
 
     public AuthResponse(String message)
-{
-    this.message=message;
-}
+    {
+        this.message=message;
+    }
 }
