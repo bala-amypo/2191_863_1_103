@@ -42,6 +42,8 @@ public class Employee{
     @Column(nullable = false , updatable = false)
     private LocalDateTime createdAt;
 
+    @ManyToOne(mapped
+
     //Constructors
     public Employee(){}
 
