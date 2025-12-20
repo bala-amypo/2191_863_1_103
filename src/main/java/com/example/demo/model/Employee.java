@@ -43,6 +43,8 @@ public class Employee{
     @NotNull
     private LocalDateTime createdAt;
 
+    //Re
+
     //Constructors
     public Employee(){}
 
@@ -54,7 +56,11 @@ public class Employee{
         this.skills = skills;
         this.maxWeeklyHours = maxWeeklyHours;
     }
-
+    @PrePersist
+    protected void onCreate() 
+    {  
+        this.createdAt=LocalDateTime.now();
+    } 
     //Getters
     public Long getId() 
     {
@@ -74,10 +80,10 @@ public class Employee{
     }
     public String getSkills()
     {
-        return getSkillsSet(skills);
+        return skills;
     }
     //Skills passed as comma-separated values returns as Set<String>
-    public Set<String> getSkillsSet(String skills)
+    public Set<String> getSkillsSet()
     {
         Set<String>skillSet = new HashSet<>();
         if(skills == null || skills.trim().isEmpty())
