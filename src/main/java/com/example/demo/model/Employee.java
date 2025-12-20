@@ -156,7 +156,7 @@ public class Employee{
     {
         this.availabilities = availabilities;
     }
-    public void setCreatedAt(List<GeneratedShiftSchedule> generatedShifts)
+    public void setGeneratedShifts(List<GeneratedShiftSchedule> generatedShifts)
     {
         this.generatedShifts = generatedShifts;
     }

@@ -3,7 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -101,11 +101,11 @@ public class Department{
     {
         this.createdAt = createdAt;
     }
-    public void setCreatedAt(List<ShiftTemplate> shiftTemplates)
+    public void setAvailabilities(List<ShiftTemplate> shiftTemplates)
     {
         this.shiftTemplates = shiftTemplates;
     }
-    public void setCreatedAt(List<GeneratedShiftSchedule> generatedShifts)
+    public void setGeneratedShifts(List<GeneratedShiftSchedule> generatedShifts)
     {
         this.generatedShifts = generatedShifts;
     }
