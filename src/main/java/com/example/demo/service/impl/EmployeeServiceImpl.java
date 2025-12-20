@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class EmployeeServiceImpl implements EmployeeService {
+public class AvailabilityServiceImpl implements AvailabilityService {
 
     private final AvailabilityRepository availabilityRepository;
     private final EmployeeRepository employeeRepository;
@@ -25,8 +25,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeAvailability create(EmployeeAvailability availability) {
         if (availabilityRepository.findByEmployee_IdAndAvailableDate(
-                availability.getEmployee().getId(), availability.getAvailableDate()).isPresent()) {
-            throw new IllegalArgumentException("Availability already exists for this employee and date");
+                availability.getEmployee().getId(),
+                availability.getAvailableDate()
+        ).isPresent()) {
+            throw new IllegalArgumentException(
+                "Availability already exists for this employee and date"
+            );
         }
         return availabilityRepository.save(availability);
     }
