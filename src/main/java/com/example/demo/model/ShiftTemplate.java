@@ -28,8 +28,8 @@ public class ShiftTemplate{
     private String requiredSkills;
 
     //Relationships
-    @OneToMany(mappedBy ="employee",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-    private List<EmployeeAvailability> availabilities;
+    @OneToMany(mappedBy ="shiftTemplate",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<GeneratedShiftSchedule> generatedShifts;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id",nullable = false)
@@ -48,6 +48,19 @@ public class ShiftTemplate{
         this.requiredSkills = requiredSkills;
         this.department = department;
 
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void validateTimes()
+    {
+        if(endTime != null && startTime !=null)
+        {
+            if(endTime.isBefore(startTime)||endTime.equals(startTime))
+            {
+                throw new IllegalArgumentException("End time must be after start time");
+            }
+        }
     }
 
     //Getters
@@ -75,6 +88,10 @@ public class ShiftTemplate{
     {
         return department;
     }
+    public List<GeneratedShiftSchedule> getGeneratedShifts()
+    {
+        return generatedShifts;
+    }
     //Setters
     public void setId(Long id)
     {
@@ -100,17 +117,9 @@ public class ShiftTemplate{
     {
         this.department = department;
     }
-    @PrePersist
-    @PreUpdate
-    private void validateTimes()
+    public void setCreatedAt(List<GeneratedShiftSchedule> generatedShifts)
     {
-        if(endTime != null && startTime !=null)
-        {
-            if(endTime.isBefore(startTime)||endTime.equals(startTime))
-            {
-                throw new IllegalArgumentException("End time must be after start time");
-            }
-        }
+        this.generatedShifts = generatedShifts;
     }
  }
 
