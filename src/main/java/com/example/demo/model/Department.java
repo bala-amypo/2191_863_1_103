@@ -43,8 +43,13 @@ public class Department{
         this.name = name;
         this.description = description;
         this.requiredSkills = requiredSkills;
-        this.createdAt = LocalDateTime.now();
     }
+
+    @PrePersist
+    protected void onCreate() 
+    {  
+        this.createdAt=LocalDateTime.now();
+    } 
 
     //Getters
     public Long getId() 
@@ -66,6 +71,14 @@ public class Department{
     public LocalDateTime getCreatedAt()
     {
         return createdAt;
+    }
+    public List<ShiftTemplate> getAvailabilities()
+    {
+        return generatedShifts;
+    }
+    public List<GeneratedShiftSchedule> getGeneratedShifts()
+    {
+        return generatedShifts;
     }
     //Setters
     public void setId(Long id)
