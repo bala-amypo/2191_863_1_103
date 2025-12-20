@@ -36,7 +36,7 @@ public class User {
     //Constructors
     public User(){}
 
-    public User(String name , String email , String password , String role)
+    public User(String name , String email , String password , Role role)
     {
         this.name = name;
         this.email = email;
@@ -61,7 +61,7 @@ public class User {
     {
         return password;
     }
-    public String getRole()
+    public Role getRole()
     {
         return role;
     }
@@ -83,7 +83,7 @@ public class User {
     {
         this.password = password;
     }
-    public void setRole(String role)
+    public void setRole(Role role)
     {
         this.role = role;
     }
