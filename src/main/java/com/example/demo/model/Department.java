@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.*;
+import java.util.*;
 
 @Entity
 @Table(name = "departments")
