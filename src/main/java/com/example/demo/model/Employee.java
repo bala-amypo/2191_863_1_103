@@ -45,7 +45,10 @@ public class Employee{
 
     //Relationships
     @OneToMany(mappedBy ="employee",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-    private 
+    private List<EmployeeAvailability> availabilities;
+
+    @OneToMany(mappedBy ="employee",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<GeneratedShiftSchedule> generatedShifts;
 
     //Constructors
     public Employee(){}
