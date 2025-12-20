@@ -117,7 +117,7 @@ public class ShiftTemplate{
     {
         this.department = department;
     }
-    public void setCreatedAt(List<GeneratedShiftSchedule> generatedShifts)
+    public void setGeneratedShifts(List<GeneratedShiftSchedule> generatedShifts)
     {
         this.generatedShifts = generatedShifts;
     }

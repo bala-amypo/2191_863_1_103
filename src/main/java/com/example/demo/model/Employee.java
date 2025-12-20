@@ -152,7 +152,7 @@ public class Employee{
     {
         this.createdAt=LocalDateTime.now();
     }
-    public void setCreatedAt(List<EmployeeAvailability> availabilities)
+    public void setAvailabilities(List<EmployeeAvailability> availabilities)
     {
         this.availabilities = availabilities;
     }

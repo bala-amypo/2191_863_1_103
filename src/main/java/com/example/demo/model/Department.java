@@ -72,7 +72,7 @@ public class Department{
     {
         return createdAt;
     }
-    public List<ShiftTemplate> getAvailabilities()
+    public List<ShiftTemplate> getShiftTemplates()
     {
         return shiftTemplates;
     }
@@ -101,7 +101,7 @@ public class Department{
     {
         this.createdAt = createdAt;
     }
-    public void setAvailabilities(List<ShiftTemplate> shiftTemplates)
+    public void setShiftTemplates(List<ShiftTemplate> shiftTemplates)
     {
         this.shiftTemplates = shiftTemplates;
     }
