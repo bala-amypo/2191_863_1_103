@@ -12,6 +12,8 @@ public class Employee{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(mappedBy = "",cascade = CascadeType.ALL)
+
     @Column(nullable = false)
     @NotBlank(message = "Full name is required")
     private String fullName;
