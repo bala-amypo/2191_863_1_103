@@ -27,10 +27,10 @@ public class Department{
     private LocalDateTime createdAt;
 
     //Relationships
-    @OneToMany(mappedBy ="departments",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToMany(mappedBy ="department",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<ShiftTemplate> shiftTemplates;
 
-    @OneToMany(mappedBy ="departments",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToMany(mappedBy ="department",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<GeneratedShiftSchedule> generatedShifts;
 
     //Constructors
