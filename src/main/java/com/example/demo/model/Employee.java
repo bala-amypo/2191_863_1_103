@@ -12,8 +12,6 @@ public class Employee{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(mappedBy = "",cascade = CascadeType.ALL)
-
     @Column(nullable = false)
     @NotBlank(message = "Full name is required")
     private String fullName;
@@ -42,8 +40,8 @@ public class Employee{
     private Integer maxWeeklyHours;
 
     @Column(nullable = false , updatable = false)
+    @NotNull
     private LocalDateTime createdAt;
-
 
     //Constructors
     public Employee(){}
@@ -55,7 +53,6 @@ public class Employee{
         this.role = role;
         this.skills = skills;
         this.maxWeeklyHours = maxWeeklyHours;
-        this.createdAt = LocalDateTime.now();
     }
 
     //Getters
