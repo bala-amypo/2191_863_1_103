@@ -23,7 +23,15 @@ public class Department{
     private String requiredSkills;
 
     @Column(nullable = false , updatable = false)
+    @NotNull
     private LocalDateTime createdAt;
+
+    //Relationships
+    @OneToMany(mappedBy ="departments",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<ShiftTemplate> shiftTemplates;
+
+    @OneToMany(mappedBy ="departments",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<GeneratedShiftSchedule> generatedShifts;
 
     //Constructors
     public Department(){
