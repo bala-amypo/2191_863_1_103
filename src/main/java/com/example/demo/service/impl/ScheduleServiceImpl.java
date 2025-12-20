@@ -18,11 +18,10 @@ public class ScheduleServiceImpl implements ScheduleService {
     private final EmployeeRepository employeeRepository;
     private final GeneratedShiftScheduleRepository generatedShiftScheduleRepository;
 
-    public ScheduleServiceImpl(
-            ShiftTemplateRepository shiftTemplateRepository,
-            AvailabilityRepository availabilityRepository,
-            EmployeeRepository employeeRepository,
-            GeneratedShiftScheduleRepository generatedShiftScheduleRepository) {
+    public ScheduleServiceImpl(ShiftTemplateRepository shiftTemplateRepository,
+                               AvailabilityRepository availabilityRepository,
+                               EmployeeRepository employeeRepository,
+                               GeneratedShiftScheduleRepository generatedShiftScheduleRepository) {
         this.shiftTemplateRepository = shiftTemplateRepository;
         this.availabilityRepository = availabilityRepository;
         this.employeeRepository = employeeRepository;

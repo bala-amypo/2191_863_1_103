@@ -13,9 +13,12 @@ import java.util.List;
 public class AvailabilityServiceImpl implements AvailabilityService {
 
     private final AvailabilityRepository availabilityRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public AvailabilityServiceImpl(AvailabilityRepository availabilityRepository) {
+    public AvailabilityServiceImpl(AvailabilityRepository availabilityRepository,
+                                   EmployeeRepository employeeRepository) {
         this.availabilityRepository = availabilityRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
