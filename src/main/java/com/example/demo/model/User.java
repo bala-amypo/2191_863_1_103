@@ -25,7 +25,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    @NotNull(message = Role is required)
+    @NotNull(message = "Role is required")
     @Enumerated(EnumType.STRING)
     private Role role = Role.ANALYST;
 
