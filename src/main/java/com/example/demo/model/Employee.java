@@ -44,7 +44,7 @@ public class Employee{
 
     //Constructors
     public Employee(){
-        this.createdAt=LocalDateTime.now();
+
     }
 
     public Employee(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
