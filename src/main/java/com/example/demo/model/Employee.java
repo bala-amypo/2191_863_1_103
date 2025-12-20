@@ -114,6 +114,14 @@ public class Employee{
     {
         return createdAt;
     }
+    public List<EmployeeAvailability> getAvailabilities()
+    {
+        return availabilities;
+    }
+    public List<GeneratedShiftSchedule> getGeneratedShifts()
+    {
+        return generatedShifts;
+    }
 
     //Setters
     public void setId(Long id)
@@ -143,5 +151,13 @@ public class Employee{
     public void setCreatedAt(LocalDateTime createdAt)
     {
         this.createdAt=LocalDateTime.now();
+    }
+    public void setCreatedAt(List<EmployeeAvailability> availabilities)
+    {
+        this.availabilities = availabilities;
+    }
+    public void setCreatedAt(List<GeneratedShiftSchedule> generatedShifts)
+    {
+        this.generatedShifts = generatedShifts;
     }
 }
