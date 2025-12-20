@@ -121,9 +121,9 @@ public class Employee{
     {
         this.role = role;
     }
-    public void setSkills(String skills)
+    public void setSkills(Set<String> skillSet)
     {
-        this.skills = skills;
+        this.skills = skillSet;
     }
     public void setMaxWeeklyHours(Integer maxWeeklyHours)
     {
