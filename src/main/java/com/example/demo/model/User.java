@@ -25,14 +25,12 @@ public class User {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private eum role = Role.ANALYST;
+    private Role role = Role.ANALYST;
 
-    public enum Role {
-
-
+    public enum Role 
+    {
+        ADMIN,
         ANALYST
-
-
     }
 
     //Constructors
