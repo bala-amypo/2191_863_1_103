@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class AvailabilityServiceImpl implements AvailabilityService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     private final AvailabilityRepository availabilityRepository;
     private final EmployeeRepository employeeRepository;
