@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import jakarta.validation.constraints.*;
 
 @Entity
-@Table(name = "employee_availability",uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id","availableDate"}))
+@Table(name = "employee_availability",uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id","available_date"}))
 public class EmployeeAvailability{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class EmployeeAvailability{
     @NotNull(message = "Employee is required")
     private Employee employee;
 
-    @Column(nullable = false)
+    @Column(nullable = false , name = "available_date")
     @NotNull(message = "Available Date is required")
     private LocalDate availableDate;
 
