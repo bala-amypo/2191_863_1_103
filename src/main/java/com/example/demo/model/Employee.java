@@ -43,9 +43,7 @@ public class Employee{
     private LocalDateTime createdAt;
 
     //Constructors
-    public Employee(){
-
-    }
+    public Employee(){}
 
     public Employee(String fullName , String email , Role role , String skills , Integer maxWeeklyHours)
     {
@@ -105,6 +103,7 @@ public class Employee{
     {
         return createdAt;
     }
+
     //Setters
     public void setId(Long id)
     {
@@ -132,6 +131,6 @@ public class Employee{
     }
     public void setCreatedAt(LocalDateTime createdAt)
     {
-        this.createdAt = createdAt;
+        this.createdAt=LocalDateTime.now();
     }
 }
