@@ -43,7 +43,9 @@ public class Employee{
     @NotNull
     private LocalDateTime createdAt;
 
-    //Re
+    //Relationships
+    @OneToMany(mappedBy ="employee",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private 
 
     //Constructors
     public Employee(){}
