@@ -24,8 +24,16 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    @
-    private String role = "ANALYST";
+    @Enumerated(EnumType.STRING)
+    private eum role = Role.ANALYST;
+
+    public enum Role {
+
+
+        ANALYST
+
+
+    }
 
     //Constructors
     public User(){}
