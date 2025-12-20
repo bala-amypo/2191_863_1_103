@@ -79,7 +79,7 @@ public class Employee{
         return skills;
     }
     //Skills passed as comma-separated values returns as Set<String>
-    public Set<String> getSkillsSet()
+    public Set<String> getSkillsSet(String skills)
     {
         Set<String>skillSet = new HashSet<>();
         if(skills == null || skills.trim().isEmpty())
