@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalTime;
 import jakarta.validation.constraints.*;
+import java.util.*;
 
 @Entity
 @Table(name = "shift_templates", uniqueConstraints = @UniqueConstraint(columnNames = {"templateName","department_id"}))
@@ -23,9 +24,12 @@ public class ShiftTemplate{
     @NotNull(message = "End time is required")
     private LocalTime endTime;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Required skills are required")
+    @Column
     private String requiredSkills;
+
+    //Relationships
+    @OneToMany(mappedBy ="employee",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    private List<EmployeeAvailability> availabilities;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id",nullable = false)
