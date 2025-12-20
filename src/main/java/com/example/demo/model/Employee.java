@@ -74,7 +74,7 @@ public class Employee{
     }
     public String getSkills()
     {
-        return skills;
+        return getSkillsSet(skills);
     }
     //Skills passed as comma-separated values returns as Set<String>
     public Set<String> getSkillsSet(String skills)
