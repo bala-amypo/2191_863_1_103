@@ -1,73 +1,55 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.Employee;
-import com.example.demo.repository.EmployeeRepository;
-import com.example.demo.service.EmployeeService;
+import com.example.demo.model.EmployeeAvailability;
+import com.example.demo.repository.AvailabilityRepository;
+import com.example.demo.repository.EmployeeRepository; 
+import com.example.demo.service.AvailabilityService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 @Transactional
-public class EmployeeServiceImpl implements EmployeeService {
+public class AvailabilityServiceImpl implements AvailabilityService {
 
+    private final AvailabilityRepository availabilityRepository;
     private final EmployeeRepository employeeRepository;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+    public AvailabilityServiceImpl(AvailabilityRepository availabilityRepository,
+                                   EmployeeRepository employeeRepository) {
+        this.availabilityRepository = availabilityRepository;
         this.employeeRepository = employeeRepository;
     }
 
     @Override
-    public Employee createEmployee(Employee employee) {
-        if (employeeRepository.existsByEmail(employee.getEmail())) {
-            throw new IllegalArgumentException("Employee with this email already exists");
+    public EmployeeAvailability create(EmployeeAvailability availability) {
+        if (availabilityRepository.findByEmployee_IdAndAvailableDate(
+                availability.getEmployee().getId(), availability.getAvailableDate()).isPresent()) {
+            throw new IllegalArgumentException("Availability already exists for this employee and date");
         }
-        if (employee.getMaxWeeklyHours() == null || employee.getMaxWeeklyHours() <= 0) {
-            throw new IllegalArgumentException("Max weekly hours must be greater than 0");
+        return availabilityRepository.save(availability);
+    }
+
+    @Override
+    public EmployeeAvailability update(Long id, EmployeeAvailability availability) {
+        EmployeeAvailability existing = availabilityRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Availability not found"));
+        existing.setAvailable(availability.getAvailable());
+        existing.setAvailableDate(availability.getAvailableDate());
+        return availabilityRepository.save(existing);
+    }
+
+    @Override
+    public void delete(Long id) {
+        if (!availabilityRepository.existsById(id)) {
+            throw new RuntimeException("Availability not found");
         }
-        if (employee.getRole() == null) employee.setRole(Employee.Role.STAFF);
-        employeeRepository.save(employee);
-        return employee;
+        availabilityRepository.deleteById(id);
     }
 
     @Override
-    public Employee getEmployee(Long id) {
-        return employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
-    }
-
-    @Override
-    public Employee updateEmployee(Long id, Employee employee) {
-        Employee existing = getEmployee(id);
-        if (!existing.getEmail().equals(employee.getEmail()) &&
-                employeeRepository.existsByEmail(employee.getEmail())) {
-            throw new IllegalArgumentException("Employee email already exists");
-        }
-        existing.setFullName(employee.getFullName());
-        existing.setEmail(employee.getEmail());
-        existing.setRole(employee.getRole());
-        existing.setSkills(employee.getSkills());
-        existing.setMaxWeeklyHours(employee.getMaxWeeklyHours());
-        return employeeRepository.save(existing);
-    }
-
-    @Override
-    public void deleteEmployee(Long id) {
-        if (!employeeRepository.existsById(id)) {
-            throw new RuntimeException("Employee not found");
-        }
-        employeeRepository.deleteById(id);
-    }
-
-    @Override
-    public List<Employee> getAll() {
-        return employeeRepository.findAll();
-    }
-
-    @Override
-    public Employee findByEmail(String email) {
-        return employeeRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
+    public List<EmployeeAvailability> getByDate(LocalDate date) {
+        return availabilityRepository.findByAvailableDateAndAvailable(date, true);
     }
 }
