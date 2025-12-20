@@ -22,7 +22,14 @@ public class Employee{
     private String email;
 
     @Column(nullable = false)
-    private String role = "STAFF";
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.STAFF;
+
+    public enum Role 
+    {
+        ADMIN,
+        STAFF
+    }
 
     @Column(nullable = false)
     private String skills;
