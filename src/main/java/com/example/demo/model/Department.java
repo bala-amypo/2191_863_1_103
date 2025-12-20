@@ -74,7 +74,7 @@ public class Department{
     }
     public List<ShiftTemplate> getAvailabilities()
     {
-        return generatedShifts;
+        return shiftTemplates;
     }
     public List<GeneratedShiftSchedule> getGeneratedShifts()
     {
@@ -100,5 +100,13 @@ public class Department{
     public void setCreatedAt(LocalDateTime createdAt)
     {
         this.createdAt = createdAt;
+    }
+    public void setCreatedAt(List<ShiftTemplate> shiftTemplates)
+    {
+        this.shiftTemplates = shiftTemplates;
+    }
+    public void setCreatedAt(List<GeneratedShiftSchedule> generatedShifts)
+    {
+        this.generatedShifts = generatedShifts;
     }
 }
