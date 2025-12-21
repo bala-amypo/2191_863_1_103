@@ -80,9 +80,24 @@ public class ShiftTemplate{
     {
         return endTime;
     }
-    public String getRequiredSkillsSet()
+    public String getRequiredSkills()
     {
         return requiredSkills;
+    }
+    
+    public Set<String> getRequiredSkillsSet() {
+        Set<String> skillSet = new HashSet<>();
+        if (requiredSkills == null || requiredSkills.trim().isEmpty()) {
+            return skillSet;
+        }
+        String[] parts = requiredSkills.split(",");
+        for (String part : parts) {
+            String trimmed = part.trim();
+            if (!trimmed.isEmpty()) {
+                skillSet.add(trimmed);
+            }
+        }
+        return skillSet;
     }
     public Department getDepartment()
     {
@@ -109,7 +124,7 @@ public class ShiftTemplate{
     {
         this.endTime = endTime;
     }
-    public void setRequiredSkillsSet(String requiredSkills)
+    public void setRequiredSkills(String requiredSkills)
     {
         this.requiredSkills = requiredSkills;
     }
