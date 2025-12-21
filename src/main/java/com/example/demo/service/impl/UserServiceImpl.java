@@ -3,7 +3,6 @@ package com.example.demo.service.impl;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,13 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     //Constructor
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) 
+    public UserServiceImpl(UserRepository userRepository) 
     {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     //Methods
@@ -29,10 +26,9 @@ public class UserServiceImpl implements UserService {
         {
             throw new IllegalArgumentException("Email already exists");
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         if (user.getRole() == null) 
         {
-            user.setRole("ANALYST");
+            user.setRole(User.Role.ANALYST);
         }
         return userRepository.save(user);
     }

@@ -33,7 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         if (employee.getRole() == null) 
         {
-            employee.setRole("STAFF");
+            employee.setRole(Employee.Role.STAFF);
         }
         return employeeRepository.save(employee);
     }
