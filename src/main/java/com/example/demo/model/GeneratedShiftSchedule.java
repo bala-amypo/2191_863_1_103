@@ -103,7 +103,7 @@ public class GeneratedShiftSchedule{
     {
         this.id = id;
     }
-     public void setShiftTemplate(LocalDate shiftDate)
+     public void setShiftDate(LocalDate shiftDate)
     {
         this.shiftDate = shiftDate;
     }
