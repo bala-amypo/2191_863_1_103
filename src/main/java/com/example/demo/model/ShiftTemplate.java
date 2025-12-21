@@ -80,7 +80,7 @@ public class ShiftTemplate{
     {
         return endTime;
     }
-    public String getRequiredSkills()
+    public String getRequiredSkillsSet()
     {
         return requiredSkills;
     }
@@ -109,7 +109,7 @@ public class ShiftTemplate{
     {
         this.endTime = endTime;
     }
-    public void setRequiredSkills(String requiredSkills)
+    public void setRequiredSkillsSet(String requiredSkills)
     {
         this.requiredSkills = requiredSkills;
     }
