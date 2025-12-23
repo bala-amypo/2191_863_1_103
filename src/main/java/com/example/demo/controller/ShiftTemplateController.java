@@ -30,7 +30,7 @@ public class ShiftTemplateController {
         @ApiResponse(responseCode = "404", description = "Department not found")
     })
     public ResponseEntity<ShiftTemplate> create(@Parameter(description = "Department ID") @PathVariable Long departmentId, @RequestBody ShiftTemplate template) {
-        return ResponseEntity.ok(shiftTemplateService.create(template));
+        return ResponseEntity.ok(shiftTemplateService.create(departmentId, template));
     }
 
     @GetMapping

@@ -23,6 +23,14 @@ public class ShiftTemplateServiceImpl implements ShiftTemplateService {
         this.departmentRepository = departmentRepository;
     }
 
+    @Override
+    public ShiftTemplate create(Long departmentId, ShiftTemplate template) {
+        var department = departmentRepository.findById(departmentId)
+                .orElseThrow(() -> new RuntimeException("Department not found"));
+        template.setDepartment(department);
+        return create(template);
+    }
+
     //Methods
     @Override
     public ShiftTemplate create(ShiftTemplate template) 
