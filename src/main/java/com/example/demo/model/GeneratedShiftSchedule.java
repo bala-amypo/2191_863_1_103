@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalTime;
 import java.time.LocalDate;
 import jakarta.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "generated_shift_schedules")
@@ -18,25 +20,30 @@ public class GeneratedShiftSchedule{
 
     @Column(nullable = false)
     @NotNull(message = "Start Time is required")
+    @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime startTime;
 
     @Column(nullable = false)
     @NotNull(message = "End Time is required")
+    @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime endTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id",nullable = false)
     @NotNull(message = "Department is required")
+    @JsonIgnore
     private Department department;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id",nullable = false)
     @NotNull(message = "Employee is required")
+    @JsonIgnore
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shift_template_id",nullable = false)
     @NotNull(message = "Shift Template is required")
+    @JsonIgnore
     private ShiftTemplate shiftTemplate;
 
 

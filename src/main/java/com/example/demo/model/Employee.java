@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.*;
 
 @Entity
@@ -45,9 +46,11 @@ public class Employee{
 
     //Relationships
     @OneToMany(mappedBy ="employee",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<EmployeeAvailability> availabilities;
 
     @OneToMany(mappedBy ="employee",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<GeneratedShiftSchedule> generatedShifts;
 
     //Constructors

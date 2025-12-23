@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 @Entity
@@ -28,9 +29,11 @@ public class Department{
 
     //Relationships
     @OneToMany(mappedBy ="department",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<ShiftTemplate> shiftTemplates;
 
     @OneToMany(mappedBy ="department",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<GeneratedShiftSchedule> generatedShifts;
 
     //Constructors

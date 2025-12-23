@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import jakarta.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "employee_availability",uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id","available_date"}))
@@ -13,6 +14,7 @@ public class EmployeeAvailability{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)
+    @JsonIgnore
     @NotNull(message = "Employee is required")
     private Employee employee;
 
