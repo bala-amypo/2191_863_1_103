@@ -4,84 +4,94 @@ import com.example.demo.model.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.ScheduleService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
-@Transactional
 public class ScheduleServiceImpl implements ScheduleService {
-    
+
     private final ShiftTemplateRepository shiftTemplateRepository;
     private final AvailabilityRepository availabilityRepository;
     private final EmployeeRepository employeeRepository;
-    private final GeneratedShiftScheduleRepository generatedShiftScheduleRepository;
+    private final GeneratedShiftScheduleRepository scheduleRepository;
+    private final DepartmentRepository departmentRepository;
 
-    //Constructor
     public ScheduleServiceImpl(ShiftTemplateRepository shiftTemplateRepository,
                               AvailabilityRepository availabilityRepository,
                               EmployeeRepository employeeRepository,
-                              GeneratedShiftScheduleRepository generatedShiftScheduleRepository) 
-    {
+                              GeneratedShiftScheduleRepository scheduleRepository,
+                              DepartmentRepository departmentRepository) {
         this.shiftTemplateRepository = shiftTemplateRepository;
         this.availabilityRepository = availabilityRepository;
         this.employeeRepository = employeeRepository;
-        this.generatedShiftScheduleRepository = generatedShiftScheduleRepository;
-    }
-
-    //Methods
-    @Override
-    public List<GeneratedShiftSchedule> generateForDate(LocalDate date) 
-    {
-        List<GeneratedShiftSchedule> generatedSchedules = new ArrayList<>();
-        List<ShiftTemplate> allTemplates = shiftTemplateRepository.findAll();
-        List<EmployeeAvailability> availableEmployees = availabilityRepository.findByAvailableDateAndAvailable(date, true);
-
-        for (ShiftTemplate template : allTemplates) 
-        {
-            Employee assignedEmployee = findQualifiedEmployee(template, availableEmployees);
-            
-            if (assignedEmployee != null) 
-            {
-                GeneratedShiftSchedule schedule = new GeneratedShiftSchedule();
-                schedule.setShiftDate(date);
-                schedule.setStartTime(template.getStartTime());
-                schedule.setEndTime(template.getEndTime());
-                schedule.setShiftTemplate(template);
-                schedule.setDepartment(template.getDepartment());
-                schedule.setEmployee(assignedEmployee);
-                
-                generatedSchedules.add(generatedShiftScheduleRepository.save(schedule));
-            }
-        }
-        
-        return generatedSchedules;
-    }
-
-    private Employee findQualifiedEmployee(ShiftTemplate template, List<EmployeeAvailability> availableEmployees) 
-    {
-        Set<String> requiredSkills = template.getRequiredSkillsSet();
-        
-        for (EmployeeAvailability availability : availableEmployees) 
-        {
-            Employee employee = availability.getEmployee();
-            Set<String> employeeSkills = employee.getSkillsSet();
-            
-            // Check if employee has all required skills
-            if (employeeSkills.containsAll(requiredSkills)) 
-            {
-                return employee;
-            }
-        }
-        
-        return null; // No qualified employee found
+        this.scheduleRepository = scheduleRepository;
+        this.departmentRepository = departmentRepository;
     }
 
     @Override
-    public List<GeneratedShiftSchedule> getByDate(LocalDate date) 
-    {
-        return generatedShiftScheduleRepository.findByShiftDate(date);
+    public List<GeneratedShiftSchedule> generateForDate(LocalDate date) {
+        List<GeneratedShiftSchedule> schedules = new ArrayList<>();
+        
+        List<Department> departments = departmentRepository.findAll();
+        List<EmployeeAvailability> availabilities = availabilityRepository.findByAvailableDateAndAvailable(date, true);
+        
+        for (Department department : departments) {
+            List<ShiftTemplate> templates = shiftTemplateRepository.findByDepartment_Id(department.getId());
+            
+            for (ShiftTemplate template : templates) {
+                for (EmployeeAvailability availability : availabilities) {
+                    Employee employee = availability.getEmployee();
+                    
+                    if (matchesSkills(employee.getSkills(), template.getRequiredSkills())) {
+                        GeneratedShiftSchedule schedule = new GeneratedShiftSchedule();
+                        schedule.setShiftDate(date);
+                        schedule.setStartTime(template.getStartTime());
+                        schedule.setEndTime(template.getEndTime());
+                        schedule.setEmployee(employee);
+                        schedule.setDepartment(department);
+                        schedule.setShiftTemplate(template);
+                        
+                        schedules.add(scheduleRepository.save(schedule));
+                        break;
+                    }
+                }
+            }
+        }
+        
+        return schedules;
+    }
+
+    @Override
+    public List<GeneratedShiftSchedule> getByDate(LocalDate date) {
+        return scheduleRepository.findByShiftDate(date);
+    }
+
+    private boolean matchesSkills(String employeeSkills, String requiredSkills) {
+        if (employeeSkills == null || requiredSkills == null) {
+            return false;
+        }
+        
+        List<String> empSkillsList = Arrays.asList(employeeSkills.split(","));
+        List<String> reqSkillsList = Arrays.asList(requiredSkills.split(","));
+        
+        for (String reqSkill : reqSkillsList) {
+            boolean found = false;
+            String reqSkillTrimmed = reqSkill.trim().toUpperCase();
+            
+            for (String empSkill : empSkillsList) {
+                if (empSkill.trim().toUpperCase().equals(reqSkillTrimmed)) {
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (!found) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
