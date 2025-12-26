@@ -1,14 +1,11 @@
 package com.example.demo.util;
 
-import java.time.LocalTime;
 import java.time.Duration;
+import java.time.LocalTime;
 
 public class TimeUtils {
-    
-    public static long minutesBetween(LocalTime t1, LocalTime t2) {
-        if (t1 == null || t2 == null) {
-            return 0;
-        }
-        return Duration.between(t1, t2).toMinutes();
+
+    public static long minutesBetween(LocalTime start, LocalTime end) {
+        return Duration.between(start, end).toMinutes();
     }
 }
