@@ -1,9 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.EmployeeAvailability;
-import com.example.demo.repository.AvailabilityRepository;
-import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.AvailabilityService;
+import com.example.demo.repository.EmployeeRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +15,11 @@ public class AvailabilityController {
 
     private final AvailabilityService availabilityService;
     private final EmployeeRepository employeeRepository;
-    private final AvailabilityRepository availabilityRepository;
 
     public AvailabilityController(AvailabilityService availabilityService,
-                                   EmployeeRepository employeeRepository,
-                                   AvailabilityRepository availabilityRepository) {
+                                   EmployeeRepository employeeRepository) {
         this.availabilityService = availabilityService;
         this.employeeRepository = employeeRepository;
-        this.availabilityRepository = availabilityRepository;
     }
 
     @PostMapping("/{employeeId}")
@@ -38,19 +34,14 @@ public class AvailabilityController {
     public ResponseEntity<List<EmployeeAvailability>> byEmployee(
             @PathVariable Long employeeId) {
 
-        return ResponseEntity.ok(
-                availabilityRepository.findByEmployee_Id(employeeId)
-        );
+        return ResponseEntity.ok(availabilityService.getByEmployee(employeeId));
     }
 
     @GetMapping("/{availabilityId}")
     public ResponseEntity<EmployeeAvailability> get(
             @PathVariable Long availabilityId) {
 
-        return ResponseEntity.ok(
-                availabilityRepository.findById(availabilityId)
-                        .orElseThrow(() -> new RuntimeException("Availability not found"))
-        );
+        return ResponseEntity.ok(availabilityService.get(availabilityId));
     }
 
     @PutMapping("/{id}")
@@ -58,9 +49,7 @@ public class AvailabilityController {
             @PathVariable Long id,
             @RequestBody EmployeeAvailability availability) {
 
-        return ResponseEntity.ok(
-                availabilityService.update(id, availability)
-        );
+        return ResponseEntity.ok(availabilityService.update(id, availability));
     }
 
     @DeleteMapping("/{id}")
@@ -74,8 +63,6 @@ public class AvailabilityController {
             @PathVariable String date) {
 
         LocalDate localDate = LocalDate.parse(date);
-        return ResponseEntity.ok(
-                availabilityService.getByDate(localDate)
-        );
+        return ResponseEntity.ok(availabilityService.getByDate(localDate));
     }
 }
