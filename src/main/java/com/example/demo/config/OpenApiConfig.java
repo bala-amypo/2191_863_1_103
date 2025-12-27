@@ -16,9 +16,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Employee Shift Auto Scheduler")
+                        .title("Employee Shift Auto Scheduler API")
                         .version("1.0")
-                        .description("API for managing credit cards and reward optimization"))
+                        .description("API for managing employees, departments, shift templates, availability, and automated shift scheduling"))
                 .servers(List.of(
                         new Server().url("https://9082.32procr.amypo.ai/"),
                         new Server().url("http://localhost:9001")
