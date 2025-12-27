@@ -68,7 +68,18 @@ public class AvailabilityServiceImpl implements AvailabilityService {
     }
 
     @Override
+    public EmployeeAvailability get(Long id) {
+        return availabilityRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Availability not found"));
+    }
+
+    @Override
     public List<EmployeeAvailability> getByDate(LocalDate date) {
         return availabilityRepository.findByAvailableDateAndAvailable(date, true);
+    }
+
+    @Override
+    public List<EmployeeAvailability> getByEmployee(Long employeeId) {
+        return availabilityRepository.findByEmployee_Id(employeeId);
     }
 }

@@ -8,5 +8,7 @@ public interface AvailabilityService {
     EmployeeAvailability create(EmployeeAvailability availability);
     EmployeeAvailability update(Long id, EmployeeAvailability availability);
     void delete(Long id);
+    EmployeeAvailability get(Long id);
     List<EmployeeAvailability> getByDate(LocalDate date);
+    List<EmployeeAvailability> getByEmployee(Long employeeId);
 }
