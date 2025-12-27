@@ -16,7 +16,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Credit Card Reward Maximizer API")
+                        .title("Employee Shift Auto Scheduler")
                         .version("1.0")
                         .description("API for managing credit cards and reward optimization"))
                 .servers(List.of(
