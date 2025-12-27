@@ -4,9 +4,11 @@ import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.EmployeeService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
@@ -17,16 +19,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee employee) {
-        if (employee.getMaxHoursPerWeek() == null || employee.getMaxHoursPerWeek() <= 0) {
+        if (employeeRepository.existsByEmail(employee.getEmail())) {
+            throw new IllegalArgumentException("Email already exists");
+        }
+
+        if (employee.getMaxWeeklyHours() == null || employee.getMaxWeeklyHours() <= 0) {
             throw new RuntimeException("Max hours per week must be greater than 0");
         }
         
         if (employee.getRole() == null || employee.getRole().isEmpty()) {
             employee.setRole("STAFF");
-        }
-        
-        if (employeeRepository.existsByEmail(employee.getEmail())) {
-            throw new RuntimeException("Email already exists");
         }
         
         return employeeRepository.save(employee);
@@ -62,8 +64,12 @@ public class EmployeeServiceImpl implements EmployeeService {
             existing.setSkills(employee.getSkills());
         }
         
-        if (employee.getMaxHoursPerWeek() != null) {
-            existing.setMaxHoursPerWeek(employee.getMaxHoursPerWeek());
+        if (employee.getMaxWeeklyHours() != null) {
+            existing.setMaxWeeklyHours(employee.getMaxWeeklyHours());
+        }
+        
+        if (employee.getPassword() != null) {
+            existing.setPassword(employee.getPassword());
         }
         
         return employeeRepository.save(existing);

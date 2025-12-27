@@ -4,9 +4,11 @@ import com.example.demo.model.Department;
 import com.example.demo.repository.DepartmentRepository;
 import com.example.demo.service.DepartmentService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final DepartmentRepository departmentRepository;
@@ -18,7 +20,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Department create(Department department) {
         if (departmentRepository.existsByName(department.getName())) {
-            throw new RuntimeException("Department name already exists");
+            throw new IllegalArgumentException("Department name already exists");
         }
         return departmentRepository.save(department);
     }
