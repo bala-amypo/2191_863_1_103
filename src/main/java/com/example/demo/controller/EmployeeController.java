@@ -16,19 +16,19 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<Employee> create(@RequestBody Employee employee) {
         return ResponseEntity.ok(employeeService.createEmployee(employee));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Employee>> list() {
+        return ResponseEntity.ok(employeeService.getAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Employee> get(@PathVariable Long id) {
         return ResponseEntity.ok(employeeService.getEmployee(id));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Employee>> list() {
-        return ResponseEntity.ok(employeeService.getAll());
     }
 
     @PutMapping("/{id}")
