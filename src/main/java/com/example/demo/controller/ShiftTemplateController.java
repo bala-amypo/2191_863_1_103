@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/shift-templates")
+@RequestMapping("/api/templates")
 public class ShiftTemplateController {
 
     private final ShiftTemplateService shiftTemplateService;
@@ -20,18 +20,27 @@ public class ShiftTemplateController {
         this.departmentRepository = departmentRepository;
     }
 
-    @PostMapping
-    public ResponseEntity<ShiftTemplate> create(@RequestBody ShiftTemplate shiftTemplate) {
+    @PostMapping("/department/{departmentId}")
+    public ResponseEntity<ShiftTemplate> create(@PathVariable Long departmentId, 
+                                                @RequestBody ShiftTemplate shiftTemplate) {
         return ResponseEntity.ok(shiftTemplateService.create(shiftTemplate));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<ShiftTemplate>> list() {
-        return ResponseEntity.ok(shiftTemplateService.getAll());
     }
 
     @GetMapping("/department/{departmentId}")
     public ResponseEntity<List<ShiftTemplate>> byDepartment(@PathVariable Long departmentId) {
         return ResponseEntity.ok(shiftTemplateService.getByDepartment(departmentId));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ShiftTemplate> get(@PathVariable Long id) {
+        return ResponseEntity.ok(shiftTemplateService.getAll().stream()
+                .filter(t -> t.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Template not found")));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ShiftTemplate>> list() {
+        return ResponseEntity.ok(shiftTemplateService.getAll());
     }
 }

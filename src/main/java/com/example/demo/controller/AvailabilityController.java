@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.EmployeeAvailability;
+import com.example.demo.repository.AvailabilityRepository;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.AvailabilityService;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +15,31 @@ public class AvailabilityController {
 
     private final AvailabilityService availabilityService;
     private final EmployeeRepository employeeRepository;
+    private final AvailabilityRepository availabilityRepository;
 
     public AvailabilityController(AvailabilityService availabilityService,
-                                 EmployeeRepository employeeRepository) {
+                                 EmployeeRepository employeeRepository,
+                                 AvailabilityRepository availabilityRepository) {
         this.availabilityService = availabilityService;
         this.employeeRepository = employeeRepository;
+        this.availabilityRepository = availabilityRepository;
     }
 
-    @PostMapping
-    public ResponseEntity<EmployeeAvailability> create(@RequestBody EmployeeAvailability availability) {
+    @PostMapping("/{employeeId}")
+    public ResponseEntity<EmployeeAvailability> create(@PathVariable Long employeeId,
+                                                       @RequestBody EmployeeAvailability availability) {
         return ResponseEntity.ok(availabilityService.create(availability));
+    }
+
+    @GetMapping("/employee/{employeeId}")
+    public ResponseEntity<List<EmployeeAvailability>> byEmployee(@PathVariable Long employeeId) {
+        return ResponseEntity.ok(availabilityRepository.findByEmployee_Id(employeeId));
+    }
+
+    @GetMapping("/{availabilityId}")
+    public ResponseEntity<EmployeeAvailability> get(@PathVariable Long availabilityId) {
+        return ResponseEntity.ok(availabilityRepository.findById(availabilityId)
+                .orElseThrow(() -> new RuntimeException("Availability not found")));
     }
 
     @PutMapping("/{id}")
