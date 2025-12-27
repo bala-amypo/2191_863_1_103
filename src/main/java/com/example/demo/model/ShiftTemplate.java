@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalTime;
 
 @Entity
@@ -11,16 +13,19 @@ public class ShiftTemplate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String templateName;
     
+    @NotNull
     private LocalTime startTime;
     
+    @NotNull
     private LocalTime endTime;
     
     private String requiredSkills;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
     public ShiftTemplate() {

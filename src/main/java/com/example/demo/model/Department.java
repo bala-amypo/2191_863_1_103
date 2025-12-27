@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "departments")
@@ -10,12 +12,15 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(unique = true)
     private String name;
     
     private String description;
     
     private String requiredSkills;
+
+    private LocalDateTime createdAt;
 
     public Department() {
     }
@@ -24,6 +29,11 @@ public class Department {
         this.name = name;
         this.description = description;
         this.requiredSkills = requiredSkills;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -56,5 +66,13 @@ public class Department {
 
     public void setRequiredSkills(String requiredSkills) {
         this.requiredSkills = requiredSkills;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

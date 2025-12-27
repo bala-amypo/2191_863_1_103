@@ -1,6 +1,9 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "employees")
@@ -10,26 +13,38 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String fullName;
     
+    @Email
+    @NotBlank
     @Column(unique = true)
     private String email;
     
-    private String role;
+    private String password;
+    
+    private String role = "STAFF";
     
     private String skills;
     
-    private Integer maxHoursPerWeek;
+    private Integer maxWeeklyHours;
+
+    private LocalDateTime createdAt;
 
     public Employee() {
     }
 
-    public Employee(String fullName, String email, String role, String skills, Integer maxHoursPerWeek) {
+    public Employee(String fullName, String email, String role, String skills, Integer maxWeeklyHours) {
         this.fullName = fullName;
         this.email = email;
         this.role = role;
         this.skills = skills;
-        this.maxHoursPerWeek = maxHoursPerWeek;
+        this.maxWeeklyHours = maxWeeklyHours;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -56,6 +71,14 @@ public class Employee {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getRole() {
         return role;
     }
@@ -72,11 +95,27 @@ public class Employee {
         this.skills = skills;
     }
 
+    public Integer getMaxWeeklyHours() {
+        return maxWeeklyHours;
+    }
+
+    public void setMaxWeeklyHours(Integer maxWeeklyHours) {
+        this.maxWeeklyHours = maxWeeklyHours;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public Integer getMaxHoursPerWeek() {
-        return maxHoursPerWeek;
+        return maxWeeklyHours;
     }
 
     public void setMaxHoursPerWeek(Integer maxHoursPerWeek) {
-        this.maxHoursPerWeek = maxHoursPerWeek;
+        this.maxWeeklyHours = maxHoursPerWeek;
     }
 }

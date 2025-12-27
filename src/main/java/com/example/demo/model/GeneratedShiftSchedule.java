@@ -18,16 +18,16 @@ public class GeneratedShiftSchedule {
     
     private LocalTime endTime;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
-    @ManyToOne
-    @JoinColumn(name = "shift_template_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shift_template_id", nullable = false)
     private ShiftTemplate shiftTemplate;
 
     public GeneratedShiftSchedule() {
