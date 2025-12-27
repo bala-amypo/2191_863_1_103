@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,12 +30,12 @@ public class AvailabilityServiceImpl implements AvailabilityService {
                     .orElseThrow(() -> new RuntimeException("Employee not found"));
             
             if (availability.getAvailableDate() != null) {
-                EmployeeAvailability existing = availabilityRepository.findByEmployee_IdAndAvailableDate(
+                Optional<EmployeeAvailability> existing = availabilityRepository.findByEmployee_IdAndAvailableDate(
                         availability.getEmployee().getId(),
                         availability.getAvailableDate()
                 );
                 
-                if (existing != null) {
+                if (existing.isPresent()) {
                     throw new RuntimeException("Availability already exists for this date");
                 }
             }

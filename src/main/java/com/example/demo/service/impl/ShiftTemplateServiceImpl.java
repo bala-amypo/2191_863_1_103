@@ -7,6 +7,7 @@ import com.example.demo.service.ShiftTemplateService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -34,12 +35,12 @@ public class ShiftTemplateServiceImpl implements ShiftTemplateService {
         }
         
         if (shiftTemplate.getDepartment() != null && shiftTemplate.getDepartment().getId() != null) {
-            ShiftTemplate existing = shiftTemplateRepository.findByTemplateNameAndDepartment_Id(
+            Optional<ShiftTemplate> existing = shiftTemplateRepository.findByTemplateNameAndDepartment_Id(
                     shiftTemplate.getTemplateName(), 
                     shiftTemplate.getDepartment().getId()
             );
             
-            if (existing != null) {
+            if (existing.isPresent()) {
                 throw new IllegalArgumentException("Shift template name must be unique within department");
             }
         }
