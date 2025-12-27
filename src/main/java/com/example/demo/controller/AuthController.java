@@ -33,7 +33,7 @@ public class AuthController {
             User user = userService.findByEmail(email);
 
             if (passwordEncoder.matches(password, user.getPassword())) {
-                String token = jwtUtil.generateToken(user);
+                String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole());
                 Map<String, String> response = new HashMap<>();
                 response.put("token", token);
                 return ResponseEntity.ok(response);
