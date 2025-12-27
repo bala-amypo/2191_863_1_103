@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AvailabilityRepository extends JpaRepository<EmployeeAvailability, Long> {
-    EmployeeAvailability findByEmployee_IdAndAvailableDate(Long employeeId, LocalDate date);
+    Optional<EmployeeAvailability> findByEmployee_IdAndAvailableDate(Long employeeId, LocalDate date);
     List<EmployeeAvailability> findByAvailableDateAndAvailable(LocalDate date, Boolean available);
     List<EmployeeAvailability> findByEmployee_Id(Long employeeId);
 }

@@ -5,11 +5,9 @@ import com.example.demo.repository.DepartmentRepository;
 import com.example.demo.repository.ShiftTemplateRepository;
 import com.example.demo.service.ShiftTemplateService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class ShiftTemplateServiceImpl implements ShiftTemplateService {
 
     private final ShiftTemplateRepository shiftTemplateRepository;
@@ -30,18 +28,16 @@ public class ShiftTemplateServiceImpl implements ShiftTemplateService {
         
         if (shiftTemplate.getEndTime().isBefore(shiftTemplate.getStartTime()) ||
             shiftTemplate.getEndTime().equals(shiftTemplate.getStartTime())) {
-            throw new IllegalArgumentException("End time must be after start time");
+            throw new RuntimeException("End time must be after start time");
         }
         
         if (shiftTemplate.getDepartment() != null && shiftTemplate.getDepartment().getId() != null) {
-            ShiftTemplate existing = shiftTemplateRepository.findByTemplateNameAndDepartment_Id(
+            shiftTemplateRepository.findByTemplateNameAndDepartment_Id(
                     shiftTemplate.getTemplateName(), 
                     shiftTemplate.getDepartment().getId()
-            );
-            
-            if (existing != null) {
-                throw new IllegalArgumentException("Shift template name must be unique within department");
-            }
+            ).ifPresent(st -> {
+                throw new RuntimeException("Shift template name must be unique within department");
+            });
         }
         
         return shiftTemplateRepository.save(shiftTemplate);
