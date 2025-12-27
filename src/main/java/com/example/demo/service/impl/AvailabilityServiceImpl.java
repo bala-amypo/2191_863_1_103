@@ -5,10 +5,12 @@ import com.example.demo.repository.AvailabilityRepository;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.AvailabilityService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@Transactional
 public class AvailabilityServiceImpl implements AvailabilityService {
 
     private final AvailabilityRepository availabilityRepository;
@@ -27,12 +29,14 @@ public class AvailabilityServiceImpl implements AvailabilityService {
                     .orElseThrow(() -> new RuntimeException("Employee not found"));
             
             if (availability.getAvailableDate() != null) {
-                availabilityRepository.findByEmployee_IdAndAvailableDate(
+                EmployeeAvailability existing = availabilityRepository.findByEmployee_IdAndAvailableDate(
                         availability.getEmployee().getId(),
                         availability.getAvailableDate()
-                ).ifPresent(a -> {
+                );
+                
+                if (existing != null) {
                     throw new RuntimeException("Availability already exists for this date");
-                });
+                }
             }
         }
         
